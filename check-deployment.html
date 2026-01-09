@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Grading System - Deployment Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .pending { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Faculty Grading System Deployment Status</h1>
+    
+    <div id="frontend-status" class="status pending">
+        <strong>Frontend:</strong> <span id="frontend-url">Checking...</span>
+    </div>
+    
+    <div id="backend-status" class="status pending">
+        <strong>Backend API:</strong> <span id="backend-url">Checking...</span>
+    </div>
+    
+    <div id="database-status" class="status pending">
+        <strong>Database:</strong> <span id="database-info">Checking...</span>
+    </div>
+    
+    <button onclick="checkDeployment()">🔄 Check Status</button>
+    
+    <h2>📋 Deployment Checklist</h2>
+    <ul>
+        <li>✅ Code pushed to GitHub</li>
+        <li>⏳ Backend deployed to Vercel</li>
+        <li>⏳ Frontend deployed to Vercel</li>
+        <li>⏳ MongoDB Atlas setup</li>
+        <li>⏳ Supabase authentication setup</li>
+        <li>⏳ Environment variables configured</li>
+    </ul>
+    
+    <h2>🔗 Quick Links</h2>
+    <ul>
+        <li><a href="https://vercel.com/dashboard" target="_blank">Vercel Dashboard</a></li>
+        <li><a href="https://mongodb.com/atlas" target="_blank">MongoDB Atlas</a></li>
+        <li><a href="https://supabase.com/dashboard" target="_blank">Supabase Dashboard</a></li>
+        <li><a href="https://github.com/deek-04/faculty-grading-system" target="_blank">GitHub Repository</a></li>
+    </ul>
+
+    <script>
+        async function checkDeployment() {
+            // Check frontend
+            try {
+                const frontendResponse = await fetch('https://faculty-grading-system.vercel.app');
+                if (frontendResponse.ok) {
+                    document.getElementById('frontend-status').className = 'status success';
+                    document.getElementById('frontend-url').innerHTML = '✅ <a href="https://faculty-grading-system.vercel.app" target="_blank">https://faculty-grading-system.vercel.app</a>';
+                }
+            } catch (error) {
+                document.getElementById('frontend-status').className = 'status error';
+                document.getElementById('frontend-url').textContent = '❌ Not accessible';
+            }
+            
+            // Check backend
+            try {
+                const backendResponse = await fetch('https://faculty-grading-backend.vercel.app/health');
+                if (backendResponse.ok) {
+                    document.getElementById('backend-status').className = 'status success';
+                    document.getElementById('backend-url').innerHTML = '✅ <a href="https://faculty-grading-backend.vercel.app" target="_blank">https://faculty-grading-backend.vercel.app</a>';
+                }
+            } catch (error) {
+                document.getElementById('backend-status').className = 'status error';
+                document.getElementById('backend-url').textContent = '❌ Not accessible';
+            }
+        }
+        
+        // Auto-check on load
+        setTimeout(checkDeployment, 1000);
+    </script>
+</body>
+</html>
