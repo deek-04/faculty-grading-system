@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Debug - Faculty Grading System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button { padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Faculty Grading System - API Debug</h1>
+    
+    <button onclick="testHealth()">Test Health</button>
+    <button onclick="testFacultyProfile()">Test Faculty Profile</button>
+    <button onclick="testFacultyAssignments()">Test Faculty Assignments</button>
+    <button onclick="testAdminReports()">Test Admin Reports</button>
+    
+    <div id="results"></div>
+
+    <script>
+        async function testApi(url, description) {
+            const resultsDiv = document.getElementById('results');
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                resultsDiv.innerHTML += `
+                    <div class="test-result success">
+                        <h3>✅ ${description}</h3>
+                        <p><strong>URL:</strong> ${url}</p>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML += `
+                    <div class="test-result error">
+                        <h3>❌ ${description}</h3>
+                        <p><strong>URL:</strong> ${url}</p>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function testHealth() {
+            testApi('/health', 'Health Check');
+        }
+        
+        function testFacultyProfile() {
+            testApi('/api/faculty/FAC001/profile', 'Faculty Profile (FAC001)');
+        }
+        
+        function testFacultyAssignments() {
+            testApi('/api/faculty/FAC001/assignments', 'Faculty Assignments (FAC001)');
+        }
+        
+        function testAdminReports() {
+            testApi('/api/admin/reports', 'Admin Reports');
+        }
+        
+        // Auto-run tests on load
+        setTimeout(() => {
+            testHealth();
+            setTimeout(() => testFacultyProfile(), 500);
+            setTimeout(() => testFacultyAssignments(), 1000);
+            setTimeout(() => testAdminReports(), 1500);
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -167,7 +167,7 @@ export function FacultyLogin({ onSuccess, loading, setLoading }: FacultyLoginPro
       if (credentials && formData.password === credentials.password) {
         // Valid faculty login - fetch their data from backend
         try {
-          const response = await fetch(`http://localhost:5000/api/faculty/${credentials.employeeId}/profile`);
+          const response = await fetch(`/api/faculty/${credentials.employeeId}/profile`);
           const data = await response.json();
 
           if (data.success) {
