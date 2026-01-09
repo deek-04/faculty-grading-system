@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Grading System - Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #E0F2FE 0%, #C7D2FE 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #6B7280;
+            font-size: 1rem;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .toggle-btn {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        .toggle-btn.active {
+            background: #2563EB;
+            color: white;
+            border-color: #2563EB;
+        }
+        .toggle-btn:hover {
+            border-color: #2563EB;
+        }
+        .admin-info {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .shield-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            background: #DBEAFE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .shield-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #2563EB;
+        }
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .password-group {
+            position: relative;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #6B7280;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #2563EB;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #1D4ED8;
+        }
+        .alert {
+            background: #FEF3C7;
+            border: 1px solid #FCD34D;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 16px;
+        }
+        .alert-text {
+            color: #92400E;
+            font-size: 0.875rem;
+        }
+        .footer {
+            text-align: center;
+            color: #6B7280;
+            font-size: 0.875rem;
+            margin-top: 24px;
+        }
+        .features-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .feature-item {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            color: #10B981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Faculty Grading System</h1>
+            <p class="subtitle">Secure and monitored exam grading platform</p>
+        </div>
+
+        <div class="card">
+            <div class="toggle-buttons">
+                <button class="toggle-btn" id="facultyBtn">
+                    👤 Faculty
+                </button>
+                <button class="toggle-btn active" id="adminBtn">
+                    🛡️ Admin
+                </button>
+            </div>
+
+            <div id="adminLogin" style="display: block;">
+                <div class="admin-info">
+                    <div class="shield-icon">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h2>Admin Portal</h2>
+                    <p style="color: #6B7280; font-size: 0.875rem;">Sign in as administrator</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="admin@university.edu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="password-group">
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword()">👁️</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Login as Admin</button>
+
+                    <div class="alert">
+                        <div class="alert-text">🔐 Admin credentials are required to access the portal</div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="facultyLogin" style="display: none;">
+                <div style="display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #E5E7EB;">
+                    <button id="loginTab" style="flex: 1; padding: 12px; background: #2563EB; color: white; border: none; border-radius: 8px 8px 0 0; font-weight: 600; cursor: pointer;">Login</button>
+                    <button id="registerTab" style="flex: 1; padding: 12px; background: transparent; color: #6B7280; border: none; font-weight: 600; cursor: pointer;">Register</button>
+                </div>
+                
+                <div id="facultyLoginForm">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="faculty@university.edu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="password-group">
+                            <input type="password" id="facultyPassword" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" onclick="toggleFacultyPassword()">👁️</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" onclick="event.preventDefault(); alert('✅ Faculty login form is ready!'); return false;">Login</button>
+                    <div class="alert">
+                        <div class="alert-text">⚠️ Verification is temporarily disabled. Enter your credentials to login directly.</div>
+                    </div>
+                </div>
+                
+                <div id="facultyRegisterForm" style="display: none;">
+                    <p style="text-align: center; color: #6B7280; padding: 20px;">
+                        Faculty Registration Form<br/>
+                        <span style="font-size: 0.875rem;">(Full registration available in the app)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="font-size: 1.1rem; margin-bottom: 16px; color: #1F2937;">✨ Admin Portal Features</h3>
+            <div class="features-list">
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Upload Question Papers & Answer Keys</span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Assign Papers to Faculty Members</span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Add & Manage Faculty Members</span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Add & Manage Courses</span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>View Correction Reports & Progress</span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Take Actions on Faculty Submissions</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>⚠️ This system uses face recognition and continuous monitoring</p>
+            <p>All activities are logged for security purposes</p>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const password = document.getElementById('password');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+        }
+
+        function toggleFacultyPassword() {
+            const password = document.getElementById('facultyPassword');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+        }
+
+        document.getElementById('facultyBtn').addEventListener('click', function() {
+            document.getElementById('facultyBtn').classList.add('active');
+            document.getElementById('adminBtn').classList.remove('active');
+            document.getElementById('adminLogin').style.display = 'none';
+            document.getElementById('facultyLogin').style.display = 'block';
+        });
+
+        document.getElementById('adminBtn').addEventListener('click', function() {
+            document.getElementById('adminBtn').classList.add('active');
+            document.getElementById('facultyBtn').classList.remove('active');
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('facultyLogin').style.display = 'none';
+        });
+
+        document.getElementById('loginTab').addEventListener('click', function() {
+            document.getElementById('loginTab').style.background = '#2563EB';
+            document.getElementById('loginTab').style.color = 'white';
+            document.getElementById('registerTab').style.background = 'transparent';
+            document.getElementById('registerTab').style.color = '#6B7280';
+            document.getElementById('facultyLoginForm').style.display = 'block';
+            document.getElementById('facultyRegisterForm').style.display = 'none';
+        });
+
+        document.getElementById('registerTab').addEventListener('click', function() {
+            document.getElementById('registerTab').style.background = '#2563EB';
+            document.getElementById('registerTab').style.color = 'white';
+            document.getElementById('loginTab').style.background = 'transparent';
+            document.getElementById('loginTab').style.color = '#6B7280';
+            document.getElementById('facultyLoginForm').style.display = 'none';
+            document.getElementById('facultyRegisterForm').style.display = 'block';
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Admin Login form is ready!\n\nNote: This is a preview. To run the full application, install Node.js and run "npm run dev"');
+        });
+    </script>
+</body>
+</html>

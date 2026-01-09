@@ -1,0 +1,661 @@
+/* Vibrant Purple/Lilac Theme - Global Override for All Pages */
+
+/* Purple/Lilac Color Palette - Matching Your Design */
+:root {
+  /* Main purple shades from your image */
+  --purple-primary: #9333EA;
+  --purple-dark: #7E22CE;
+  --purple-darker: #6B21A8;
+  --purple-accent: #A855F7;
+  
+  /* Lilac/Light purple backgrounds */
+  --lilac-bg: #F3E8FF;
+  --lilac-light: #E9D5FF;
+  --lilac-lighter: #F5F3FF;
+  --lilac-card: #FAF5FF;
+  
+  /* Purple text colors */
+  --purple-text: #6B21A8;
+  --purple-text-light: #9333EA;
+  
+  /* Status colors in purple tones */
+  --purple-success: #A855F7;
+  --purple-warning: #C084FC;
+  --purple-info: #D8B4FE;
+}
+
+/* ===== GLOBAL BACKGROUNDS - NO MORE WHITE/BLACK ===== */
+body,
+#root,
+.min-h-screen,
+html {
+  background: linear-gradient(135deg, var(--lilac-bg) 0%, var(--lilac-lighter) 100%) !important;
+  min-height: 100vh !important;
+}
+
+/* Override ALL white backgrounds with lilac */
+.bg-white,
+.bg-slate-50,
+.bg-gray-50,
+.bg-pink-50,
+[class*="bg-white"] {
+  background-color: var(--lilac-card) !important;
+}
+
+/* Light backgrounds */
+.bg-slate-100,
+.bg-gray-100,
+.bg-pink-100 {
+  background-color: var(--lilac-light) !important;
+}
+
+/* Medium backgrounds */
+.bg-slate-200,
+.bg-gray-200,
+.bg-pink-200,
+.bg-lime-400 {
+  background-color: var(--lilac-light) !important;
+}
+
+/* Accent backgrounds */
+.bg-blue-300,
+.bg-cyan-400 {
+  background-color: var(--purple-accent) !important;
+}
+
+.bg-blue-400,
+.bg-indigo-600 {
+  background-color: var(--purple-primary) !important;
+}
+
+/* Primary purple backgrounds */
+.bg-blue-500,
+.bg-indigo-500,
+.bg-pink-500,
+.bg-orange-500 {
+  background-color: var(--purple-primary) !important;
+}
+
+.bg-blue-600,
+.bg-indigo-600,
+.bg-teal-700 {
+  background-color: var(--purple-dark) !important;
+}
+
+.bg-blue-700,
+.bg-indigo-700 {
+  background-color: var(--purple-darker) !important;
+}
+
+.bg-emerald-600,
+.bg-green-600 {
+  background-color: var(--purple-success) !important;
+}
+
+/* ===== GRADIENT BACKGROUNDS - PURPLE GRADIENTS ===== */
+.bg-gradient-to-r.from-blue-500,
+.bg-gradient-to-r.from-indigo-600,
+.from-blue-500,
+.from-indigo-600 {
+  --tw-gradient-from: var(--purple-primary) !important;
+  --tw-gradient-from-position: !important;
+  --tw-gradient-to: rgb(147 51 234 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.bg-gradient-to-r.to-blue-600,
+.bg-gradient-to-r.to-indigo-700,
+.to-blue-600,
+.to-indigo-700 {
+  --tw-gradient-to: var(--purple-dark) !important;
+}
+
+.bg-gradient-to-r.from-indigo-50,
+.from-indigo-50 {
+  --tw-gradient-from: var(--lilac-light) !important;
+}
+
+.bg-gradient-to-r.to-slate-50,
+.to-slate-50 {
+  --tw-gradient-to: var(--lilac-bg) !important;
+}
+
+/* ===== BORDER COLORS - PURPLE BORDERS ===== */
+.border-slate-200,
+.border-gray-200,
+.border-pink-200,
+.border {
+  border-color: var(--purple-accent) !important;
+}
+
+.border-slate-300,
+.border-pink-300,
+.border-blue-300 {
+  border-color: var(--purple-primary) !important;
+}
+
+.border-blue-700,
+.border-indigo-800 {
+  border-color: var(--purple-dark) !important;
+}
+
+/* ===== TEXT COLORS - NO MORE BLACK, ONLY PURPLE ===== */
+.text-slate-600,
+.text-gray-600,
+.text-blue-600 {
+  color: var(--purple-text) !important;
+}
+
+.text-slate-700,
+.text-gray-700,
+.text-blue-700,
+.text-slate-800,
+.text-gray-800,
+.text-blue-800,
+.text-slate-900,
+.text-gray-900,
+.text-blue-900,
+.text-black {
+  color: var(--purple-darker) !important;
+}
+
+/* Light text on dark backgrounds */
+.text-pink-100,
+.text-indigo-100,
+.text-white {
+  color: var(--lilac-lighter) !important;
+}
+
+/* Accent text colors */
+.text-pink-500,
+.text-pink-600,
+.text-orange-600 {
+  color: var(--purple-primary) !important;
+}
+
+.text-emerald-600,
+.text-green-600 {
+  color: var(--purple-success) !important;
+}
+
+/* ===== HOVER STATES - PURPLE HOVER EFFECTS ===== */
+.hover\:bg-slate-100:hover,
+.hover\:bg-gray-100:hover,
+.hover\:bg-blue-50:hover,
+.hover\:bg-pink-50:hover,
+.hover\:bg-white:hover {
+  background-color: var(--lilac-light) !important;
+}
+
+.hover\:bg-slate-200:hover,
+.hover\:bg-pink-100:hover {
+  background-color: var(--lilac-light) !important;
+}
+
+.hover\:bg-blue-400:hover,
+.hover\:bg-indigo-500:hover {
+  background-color: var(--purple-accent) !important;
+}
+
+.hover\:bg-blue-600:hover,
+.hover\:bg-indigo-700:hover {
+  background-color: var(--purple-dark) !important;
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: var(--purple-darker) !important;
+}
+
+/* ===== BADGES & STATUS COLORS ===== */
+.bg-emerald-600 {
+  background-color: var(--purple-success) !important;
+}
+
+.bg-slate-400 {
+  background-color: var(--purple-accent) !important;
+}
+
+/* ===== PROGRESS BARS ===== */
+.bg-slate-200[role="progressbar"],
+.bg-pink-200[role="progressbar"] {
+  background-color: var(--lilac-light) !important;
+}
+
+/* ===== CARDS - LIGHT PURPLE INSTEAD OF WHITE ===== */
+.bg-white[class*="Card"],
+[class*="card"],
+[class*="Card"] {
+  background-color: var(--lilac-card) !important;
+  border-color: var(--purple-accent) !important;
+}
+
+/* ===== BUTTONS - PURPLE THEME ===== */
+button.bg-white,
+button {
+  background-color: var(--lilac-card) !important;
+  border-color: var(--purple-accent) !important;
+}
+
+button.text-blue-600,
+button.text-teal-700 {
+  color: var(--purple-text) !important;
+}
+
+button.hover\:bg-gray-100:hover,
+button.hover\:bg-pink-50:hover {
+  background-color: var(--lilac-light) !important;
+}
+
+/* ===== LOGIN PAGE SPECIFIC ===== */
+.login-container,
+.auth-container,
+[class*="login"],
+[class*="auth"] {
+  background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-dark) 100%) !important;
+}
+
+/* ===== HEADER/NAVBAR ===== */
+header,
+nav,
+.header,
+.navbar {
+  background: linear-gradient(90deg, var(--purple-primary) 0%, var(--purple-dark) 100%) !important;
+  color: var(--lilac-lighter) !important;
+}
+
+/* ===== TABLES ===== */
+table,
+thead,
+tbody,
+tr {
+  background-color: var(--lilac-card) !important;
+}
+
+th {
+  background-color: var(--lilac-light) !important;
+  color: var(--purple-darker) !important;
+}
+
+td {
+  border-color: var(--purple-accent) !important;
+}
+
+/* ===== INPUTS & FORMS ===== */
+input,
+textarea,
+select {
+  background-color: var(--lilac-lighter) !important;
+  border-color: var(--purple-accent) !important;
+  color: var(--purple-darker) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--purple-primary) !important;
+  outline-color: var(--purple-primary) !important;
+}
+
+/* ===== TEXT VISIBILITY - DARK PURPLE ON LIGHT BACKGROUNDS ===== */
+body,
+p,
+span,
+div:not([class*="bg-purple"]):not([class*="bg-indigo"]):not([class*="bg-blue"]),
+label {
+  color: #4C1D95 !important; /* Very dark purple for maximum contrast */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #3B0764 !important; /* Even darker purple for headings */
+  font-weight: 700 !important;
+}
+
+/* Text on purple/dark backgrounds should be white */
+.bg-purple-500 *,
+.bg-purple-600 *,
+.bg-purple-700 *,
+.bg-indigo-500 *,
+.bg-indigo-600 *,
+.bg-indigo-700 *,
+.bg-blue-500 *,
+.bg-blue-600 *,
+.bg-blue-700 *,
+[style*="background: linear-gradient"] * {
+  color: white !important;
+}
+
+/* ===== SHADOWS - PURPLE TINT ===== */
+.shadow,
+.shadow-sm,
+.shadow-md,
+.shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(147, 51, 234, 0.1), 0 2px 4px -1px rgba(147, 51, 234, 0.06) !important;
+}
+
+
+/* ===== ADDITIONAL OVERRIDES FOR COMPLETE PURPLE THEME ===== */
+
+/* Security Monitor & Status Cards */
+.status-card,
+[class*="monitor"],
+[class*="status"] {
+  background-color: var(--lilac-card) !important;
+  border-color: var(--purple-accent) !important;
+}
+
+/* Part Sections (like PART A, PART B) */
+[class*="part"],
+.part-section {
+  background-color: var(--lilac-light) !important;
+  color: var(--purple-darker) !important;
+}
+
+/* "NOT YET" status badges */
+.status-badge,
+[class*="badge"] {
+  background-color: var(--purple-warning) !important;
+  color: var(--purple-darker) !important;
+}
+
+/* Question Paper & Answer Key sections */
+.paper-section,
+.answer-section,
+[class*="paper"],
+[class*="answer"] {
+  background-color: var(--lilac-card) !important;
+  border-color: var(--purple-accent) !important;
+}
+
+/* Direct Link buttons */
+.direct-link,
+[class*="link-button"] {
+  color: var(--purple-text) !important;
+}
+
+/* Dropdown menus */
+.dropdown,
+select,
+[role="combobox"] {
+  background-color: var(--lilac-lighter) !important;
+  border-color: var(--purple-accent) !important;
+}
+
+/* Modal/Dialog backgrounds */
+.modal,
+.dialog,
+[role="dialog"] {
+  background-color: var(--lilac-card) !important;
+}
+
+/* Sidebar */
+.sidebar,
+aside {
+  background-color: var(--lilac-bg) !important;
+}
+
+/* Footer */
+footer {
+  background-color: var(--lilac-light) !important;
+  color: var(--purple-darker) !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--lilac-bg) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--purple-accent) !important;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--purple-primary) !important;
+}
+
+/* Loading spinners */
+.spinner,
+.loader,
+[class*="loading"] {
+  border-color: var(--purple-accent) !important;
+  border-top-color: var(--purple-primary) !important;
+}
+
+/* Tooltips */
+.tooltip,
+[role="tooltip"] {
+  background-color: var(--purple-darker) !important;
+  color: var(--lilac-lighter) !important;
+}
+
+/* Alerts */
+.alert,
+[role="alert"] {
+  background-color: var(--lilac-light) !important;
+  border-color: var(--purple-accent) !important;
+  color: var(--purple-darker) !important;
+}
+
+/* Tabs */
+.tab,
+[role="tab"] {
+  background-color: var(--lilac-card) !important;
+  color: var(--purple-text) !important;
+}
+
+.tab.active,
+[role="tab"][aria-selected="true"] {
+  background-color: var(--purple-primary) !important;
+  color: var(--lilac-lighter) !important;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  color: var(--purple-text) !important;
+}
+
+/* Pagination */
+.pagination button,
+.pagination a {
+  background-color: var(--lilac-card) !important;
+  border-color: var(--purple-accent) !important;
+  color: var(--purple-text) !important;
+}
+
+.pagination button.active,
+.pagination a.active {
+  background-color: var(--purple-primary) !important;
+  color: var(--lilac-lighter) !important;
+}
+
+/* Checkboxes and Radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--purple-primary) !important;
+}
+
+/* Links */
+a {
+  color: var(--purple-text-light) !important;
+}
+
+a:hover {
+  color: var(--purple-primary) !important;
+}
+
+/* Disabled states */
+button:disabled,
+input:disabled,
+select:disabled {
+  background-color: var(--lilac-light) !important;
+  color: var(--purple-accent) !important;
+  opacity: 0.6;
+}
+
+/* Focus rings */
+*:focus-visible {
+  outline: 2px solid var(--purple-primary) !important;
+  outline-offset: 2px;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: var(--purple-accent) !important;
+  color: var(--purple-darker) !important;
+}
+
+/* Placeholder text */
+::placeholder {
+  color: var(--purple-accent) !important;
+  opacity: 0.7;
+}
+
+/* Code blocks */
+code,
+pre {
+  background-color: var(--lilac-light) !important;
+  color: var(--purple-darker) !important;
+  border-color: var(--purple-accent) !important;
+}
+
+
+/* ===== GRADING PAGE HEADER - CHANGE BLUE TO PURPLE ===== */
+/* Target the grading page header specifically */
+.bg-blue-600,
+.bg-blue-700,
+.bg-indigo-600,
+.bg-indigo-700,
+[class*="grading"] header,
+[class*="grading"] .header,
+[class*="paper"] header {
+  background: linear-gradient(90deg, var(--purple-primary) 0%, var(--purple-dark) 100%) !important;
+  color: white !important;
+}
+
+/* Ensure all text in headers is white */
+header *,
+nav *,
+.header *,
+.navbar * {
+  color: white !important;
+}
+
+/* Button text in headers */
+header button,
+nav button,
+.header button,
+.navbar button {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+header button:hover,
+nav button:hover,
+.header button:hover,
+.navbar button:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Fix button text visibility */
+button * {
+  color: inherit !important;
+}
+
+/* Ensure visible text on cards */
+.bg-white *,
+.bg-slate-50 *,
+.bg-gray-50 *,
+[class*="card"] *,
+[class*="Card"] * {
+  color: #3B0764 !important; /* Dark purple for card text */
+}
+
+/* Status text should be visible */
+.text-red-500,
+.text-red-600,
+[class*="NOT YET"] {
+  color: #DC2626 !important; /* Red for "NOT YET" status */
+}
+
+.text-green-500,
+.text-green-600 {
+  color: #059669 !important; /* Green for success */
+}
+
+/* Ensure form labels are visible */
+label,
+.label {
+  color: #3B0764 !important;
+  font-weight: 600 !important;
+}
+
+
+/* ===== COMPREHENSIVE TEXT VISIBILITY FIX ===== */
+/* Ensure all text is dark and visible on light backgrounds */
+body, p, span, div, li, td, th, label, a, button {
+  color: #3B0764 !important; /* Very dark purple */
+}
+
+/* Override for elements with light backgrounds */
+.bg-white *, 
+.bg-slate-50 *, 
+.bg-gray-50 *, 
+.bg-pink-50 *,
+.bg-purple-50 *,
+.bg-lilac *,
+[class*="card"] *,
+[class*="Card"] * {
+  color: #3B0764 !important;
+}
+
+/* White text ONLY on dark purple backgrounds */
+.bg-purple-500, .bg-purple-500 *,
+.bg-purple-600, .bg-purple-600 *,
+.bg-purple-700, .bg-purple-700 *,
+header, header *,
+nav, nav *,
+.bg-gradient-to-r, .bg-gradient-to-r * {
+  color: white !important;
+}
+
+/* Ensure buttons have proper text color */
+button {
+  color: #3B0764 !important;
+}
+
+header button,
+nav button,
+.bg-purple-500 button,
+.bg-purple-600 button,
+.bg-purple-700 button {
+  color: white !important;
+}
+
+/* Input text should be dark */
+input, textarea, select {
+  color: #3B0764 !important;
+}
+
+/* Strong contrast for headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #2D0A5E !important;
+  font-weight: 700 !important;
+}
+
+/* Preserve status colors */
+.text-red-500, .text-red-600,
+[class*="text-red"] {
+  color: #DC2626 !important;
+}
+
+.text-green-500, .text-green-600,
+[class*="text-green"] {
+  color: #059669 !important;
+}
+
+/* Badge text */
+.badge, [class*="badge"] {
+  color: #3B0764 !important;
+  font-weight: 600 !important;
+}
